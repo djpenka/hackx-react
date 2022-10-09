@@ -1,10 +1,13 @@
 import './App.css';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 import { API, Amplify } from 'aws-amplify';
 import React, { useState } from 'react';
 
 import awsconfig from './aws-exports';
-import logo from './logo.svg';
 
 Amplify.configure(awsconfig);
 
@@ -14,9 +17,6 @@ function App() {
   return (
     <div className="App">
       <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
     </div>
   );
 }

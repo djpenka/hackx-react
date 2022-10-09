@@ -15,7 +15,7 @@
       "function": {
         "students": {
           "deploymentBucketName": "amplify-amplify53eeafd630314-staging-61039-deployment",
-          "s3Key": "amplify-builds/students-4943476258724d597175-build.zip"
+          "s3Key": "amplify-builds/students-684a784b53566375666b-build.zip"
         }
       }
     }
