@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  margin: 10em;
+}
+
+#refresh {
+  margin: 3em;
 }
 
 .App-logo {

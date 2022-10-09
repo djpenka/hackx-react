@@ -5,18 +5,37 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 import { API, Amplify } from 'aws-amplify';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
+import BasicTable from './components/BasicTable';
+import { Button } from '@mui/material';
 import awsconfig from './aws-exports';
 
 Amplify.configure(awsconfig);
 
 function App() {
-  const [count, setCount] = useState(0);
+  const apiName = 'students';
+  const path = '/students'; 
+  const [students, setStudents] = useState([]);
+  const [doRefresh, setDoRefresh] = useState(false);
+
+  useEffect(() => {
+    API
+      .get(apiName, path)
+      .then(response => {
+        setStudents(response);
+        console.log("Did refresh")
+      })
+      .catch(error => {
+        console.log(error.response);
+    });
+  }, [doRefresh])
+
   
   return (
     <div className="App">
-      <p>You clicked {count} times</p>
+      <BasicTable students={students}/>
+      <Button variant="contained" id="refresh" onClick={() => setDoRefresh(!doRefresh)}>Refresh</Button>
     </div>
   );
 }
