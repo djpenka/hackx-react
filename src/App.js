@@ -20,6 +20,13 @@ function App() {
   const [doRefresh, setDoRefresh] = useState(false);
 
   useEffect(() => {
+    const interval = setInterval(() => setDoRefresh(refresh => !refresh), 1000)
+    return () => {
+      clearInterval(interval);
+    };
+  });
+
+  useEffect(() => {
     API
       .get(apiName, path)
       .then(response => {
